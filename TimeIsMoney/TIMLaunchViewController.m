@@ -31,21 +31,15 @@
 @synthesize textViewAccessoryView;
 @synthesize keyboardTimer=_keyboardTimer;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        TIMLaunchViewModel *viewModel = [[TIMLaunchViewModel alloc] init];
-        self.viewModel = viewModel;
-        [viewModel release];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    TIMLaunchViewModel *viewModel = [[TIMLaunchViewModel alloc] init];
+    self.viewModel = viewModel;
+    [viewModel release];
     
     CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     self.attendeesSlider.transform = trans;
@@ -154,6 +148,17 @@
 
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     [self scheduleTimer: textField];
+    NSCharacterSet *validCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".0123456789"];
+    
+    BOOL shouldChange =
+    [string length] == 0 || // deletion
+    [string rangeOfCharacterFromSet:validCharacterSet].location != NSNotFound;
+
+    return shouldChange;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
     return YES;
 }
 
