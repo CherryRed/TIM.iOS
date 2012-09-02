@@ -37,8 +37,8 @@
     srand(time(NULL));
     
     self.characterLayer = [TIMMeetingCharacterLayer layerWithImage: [UIImage imageNamed: @"character.png"] sampleSize: CGSizeMake(256, 256)];
-    self.characterLayer.position = CGPointMake(1200, 530);
-    self.characterLayer.currentAnimation = TIMAnimationTypeWalkLeft;
+    self.characterLayer.position = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    self.characterLayer.currentAnimation = TIMAnimationTypeIdle;
     
     [self.layer addSublayer: self.characterLayer];
 }

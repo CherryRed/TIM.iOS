@@ -11,6 +11,7 @@
 		5F7AE6E315F41BD80081F167 /* TIMMeetingCharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AE6E215F41BD80081F167 /* TIMMeetingCharacterView.m */; };
 		5F7AE6E715F41DA80081F167 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7AE6E515F41DA80081F167 /* background.png */; };
 		5F7AE6E815F41DA80081F167 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7AE6E615F41DA80081F167 /* character.png */; };
+		5F7AE6EE15F421B20081F167 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7AE6ED15F421B20081F167 /* QuartzCore.framework */; };
 		E46F418F15F28FAF0098F6FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46F418E15F28FAF0098F6FD /* UIKit.framework */; };
 		E46F419115F28FAF0098F6FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46F419015F28FAF0098F6FD /* Foundation.framework */; };
 		E46F419315F28FAF0098F6FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46F419215F28FAF0098F6FD /* CoreGraphics.framework */; };
@@ -52,6 +53,7 @@
 		5F7AE6E215F41BD80081F167 /* TIMMeetingCharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIMMeetingCharacterView.m; sourceTree = "<group>"; };
 		5F7AE6E515F41DA80081F167 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		5F7AE6E615F41DA80081F167 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
+		5F7AE6ED15F421B20081F167 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E46F418A15F28FAF0098F6FD /* TimeIsMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeIsMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E46F418E15F28FAF0098F6FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E46F419015F28FAF0098F6FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7AE6EE15F421B20081F167 /* QuartzCore.framework in Frameworks */,
 				E46F418F15F28FAF0098F6FD /* UIKit.framework in Frameworks */,
 				E46F419115F28FAF0098F6FD /* Foundation.framework in Frameworks */,
 				E46F419315F28FAF0098F6FD /* CoreGraphics.framework in Frameworks */,
@@ -125,6 +128,7 @@
 		E46F417F15F28FAF0098F6FD = {
 			isa = PBXGroup;
 			children = (
+				5F7AE6ED15F421B20081F167 /* QuartzCore.framework */,
 				E46F419415F28FAF0098F6FD /* TimeIsMoney */,
 				E46F41AC15F28FAF0098F6FD /* TimeIsMoneyTests */,
 				E46F418D15F28FAF0098F6FD /* Frameworks */,
