@@ -76,6 +76,7 @@
 		E46F41E715F2EFE20098F6FD /* TIMResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIMResultsViewController.m; sourceTree = "<group>"; };
 		E46F41E815F2EFE20098F6FD /* TIMResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TIMResultsViewController.xib; sourceTree = "<group>"; };
 		E46F41F415F3BF2B0098F6FD /* iPad-Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "iPad-Storyboard.storyboard"; path = "../iPad-Storyboard.storyboard"; sourceTree = "<group>"; };
+		E46F41F815F412E20098F6FD /* TIMMeetingViewModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMMeetingViewModelDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +223,7 @@
 				E46F41DA15F2D6780098F6FD /* TIMMeetingViewController.h */,
 				E46F41DB15F2D6780098F6FD /* TIMMeetingViewController.m */,
 				E46F41DC15F2D6780098F6FD /* TIMMeetingViewController.xib */,
+				E46F41F815F412E20098F6FD /* TIMMeetingViewModelDelegate.h */,
 				E46F41DF15F2D7350098F6FD /* TIMMeetingViewModel.h */,
 				E46F41E015F2D7350098F6FD /* TIMMeetingViewModel.m */,
 			);

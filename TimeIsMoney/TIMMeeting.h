@@ -17,19 +17,23 @@
     NSUInteger _attendees;
     NSUInteger _averageSalary;
     NSUInteger _cost;
+    NSDate *_start;
+    NSDate *_end;
+    NSDateComponents *_duration;
 }
 
 + (TIMMeeting *) instance;
 
 - (void) startMeetingWithAttendees: (NSUInteger) attendees andAnAverageSalary: (NSUInteger) averageSalary;
-- (void) pause;
-- (void) resume;
-- (void) finish;
+- (void) finishMeeting;
 
 - (NSUInteger) attendees;
 - (NSUInteger) averageSalary;
 - (NSUInteger) cost;
+- (NSDate*) start;
+- (NSDate*) end;
+- (NSDateComponents*) duration;
 
-
+- (NSUInteger) currentCost;
 
 @end

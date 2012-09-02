@@ -16,80 +16,83 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1218" y="-87"/>
-        </scene>
-        <!--Meeting View Controller-->
-        <scene sceneID="mmk-BK-NrF">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KT3-LS-gio" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="RZh-iC-Ifl" customClass="TIMMeetingViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="knX-nu-17i"/>
-                    <connections>
-                        <segue destination="Zpg-Ga-XqX" kind="push" identifier="gotoResultsSegue" id="A0U-9x-Bmi"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="2438" y="-87"/>
-        </scene>
-        <!--Results View Controller-->
-        <scene sceneID="HQ0-zJ-8Id">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jKn-jj-n7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Zpg-Ga-XqX" customClass="TIMResultsViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ocZ-zH-JpS"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3660" y="-87"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8S0-aO-dk3">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5KA-Nw-uiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController navigationBarHidden="YES" id="Cbb-xf-xB2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5I9-qs-DR5">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="YYI-kw-fgD" kind="relationship" relationship="rootViewController" id="Qsn-d5-dnQ"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="93" y="-87"/>
-        </scene>
-    </scenes>
-    <classes>
-        <class className="TIMLaunchViewController" superclassName="TIMViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMLaunchViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="averageSalaryChanged:"/>
-                <relationship kind="action" name="dismissKeyboard:"/>
-                <relationship kind="action" name="goTapped:"/>
-                <relationship kind="action" name="numberOfAttendeeChanged:"/>
-                <relationship kind="outlet" name="attendeesSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="attendeesTextView" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="salarySlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="salaryTextView" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textViewAccessoryView" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="TIMMeetingViewController" superclassName="TIMViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMMeetingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="finishTapped:"/>
-                <relationship kind="outlet" name="attendee" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cost" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="salary" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="time" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TIMResultsViewController" superclassName="TIMViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMResultsViewController.h"/>
-        </class>
+		    <point key="canvasLocation" x="1620" y="-87"/>
+		</scene>
+		<!--Meeting View Controller-->
+		<scene sceneID="mmk-BK-NrF">
+		    <objects>
+			<placeholder placeholderIdentifier="IBFirstResponder" id="KT3-LS-gio" userLabel="First Responder" sceneMemberID="firstResponder"/>
+			<viewController id="RZh-iC-Ifl" customClass="TIMMeetingViewController" sceneMemberID="viewController">
+			    <navigationItem key="navigationItem" id="knX-nu-17i"/>
+			    <connections>
+				<segue destination="Zpg-Ga-XqX" kind="push" identifier="gotoResultsSegue" id="A0U-9x-Bmi"/>
+			    </connections>
+			</viewController>
+		    </objects>
+		    <point key="canvasLocation" x="3158" y="-87"/>
+		</scene>
+		<!--Results View Controller-->
+		<scene sceneID="HQ0-zJ-8Id">
+		    <objects>
+			<placeholder placeholderIdentifier="IBFirstResponder" id="jKn-jj-n7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+			<viewController id="Zpg-Ga-XqX" customClass="TIMResultsViewController" sceneMemberID="viewController">
+			    <navigationItem key="navigationItem" id="ocZ-zH-JpS"/>
+			</viewController>
+		    </objects>
+		    <point key="canvasLocation" x="4588" y="-87"/>
+		</scene>
+		<!--Navigation Controller-->
+		<scene sceneID="8S0-aO-dk3">
+		    <objects>
+			<placeholder placeholderIdentifier="IBFirstResponder" id="5KA-Nw-uiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+			<navigationController navigationBarHidden="YES" id="Cbb-xf-xB2" sceneMemberID="viewController">
+			    <toolbarItems/>
+			    <nil key="simulatedTopBarMetrics"/>
+			    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+			    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5I9-qs-DR5">
+				<rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+				<autoresizingMask key="autoresizingMask"/>
+			    </navigationBar>
+			    <nil name="viewControllers"/>
+			    <connections>
+				<segue destination="YYI-kw-fgD" kind="relationship" relationship="rootViewController" id="Qsn-d5-dnQ"/>
+			    </connections>
+			</navigationController>
+		    </objects>
+		    <point key="canvasLocation" x="93" y="-87"/>
+		</scene>
+	    </scenes>
+	    <classes>
+		<class className="TIMLaunchViewController" superclassName="TIMViewController">
+		    <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMLaunchViewController.h"/>
+		    <relationships>
+				<relationship kind="action" name="averageSalaryChanged:"/>
+				<relationship kind="action" name="dismissKeyboard:"/>
+				<relationship kind="action" name="goTapped:"/>
+				<relationship kind="action" name="numberOfAttendeeChanged:"/>
+				<relationship kind="outlet" name="attendeesSlider" candidateClass="UISlider"/>
+				<relationship kind="outlet" name="attendeesTextView" candidateClass="UITextField"/>
+				<relationship kind="outlet" name="salarySlider" candidateClass="UISlider"/>
+				<relationship kind="outlet" name="salaryTextView" candidateClass="UITextField"/>
+				<relationship kind="outlet" name="textViewAccessoryView" candidateClass="UIToolbar"/>
+			    </relationships>
+			</class>
+			<class className="TIMMeetingViewController" superclassName="TIMViewController">
+			    <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMMeetingViewController.h"/>
+			    <relationships>
+				<relationship kind="action" name="finishTapped:"/>
+				<relationship kind="outlet" name="attendee" candidateClass="UILabel"/>
+				<relationship kind="outlet" name="cost" candidateClass="UILabel"/>
+				<relationship kind="outlet" name="salary" candidateClass="UILabel"/>
+				<relationship kind="outlet" name="time" candidateClass="UILabel"/>
+			    </relationships>
+			</class>
+			<class className="TIMResultsViewController" superclassName="TIMViewController">
+			    <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMResultsViewController.h"/>
+		    <relationships>
+			<relationship kind="action" name="backToInitial:"/>
+		    </relationships>
+		</class>
         <class className="TIMViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TIMViewController.h"/>
         </class>
