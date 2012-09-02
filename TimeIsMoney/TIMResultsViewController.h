@@ -11,4 +11,6 @@
 
 @interface TIMResultsViewController : TIMViewController
 
+- (IBAction)backToInitial:(id)sender;
+
 @end

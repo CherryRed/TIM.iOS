@@ -8,7 +8,6 @@
 
 #import "TIMLaunchViewController.h"
 #import "TIMLaunchViewModel.h"
-#import "TIMMeetingViewController.h"
 #import "TIMMeeting.h"
 
 @interface TIMLaunchViewController ()
@@ -30,14 +29,19 @@
 
 #pragma mark - lifecycle
 
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder: aDecoder];
+    if (self) {
+        TIMLaunchViewModel *viewModel = [[TIMLaunchViewModel alloc] init];
+        self.viewModel = viewModel;
+        [viewModel release];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    TIMLaunchViewModel *viewModel = [[TIMLaunchViewModel alloc] init];
-    self.viewModel = viewModel;
-    [viewModel release];
     
     CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     self.attendeesSlider.transform = trans;
@@ -73,14 +77,12 @@
     
     [self.keyboardTimer invalidate];
     [_keyboardTimer release];
-    
     [_viewModel release];
     [salarySlider release];
     [attendeesSlider release];
     [attendeesTextView release];
     [salaryTextView release];
-    [salaryTextView release];
-    [attendeesTextView release];
+
     [super dealloc];
 }
 
@@ -96,6 +98,7 @@
 }
 
 - (IBAction)goTapped:(id)sender {
+    [self.viewModel startMeeting];
     [self performSegueWithIdentifier: @"gotoMeetingSegue" sender: self];
 }
 
