@@ -15,10 +15,9 @@
 
 @property (retain, nonatomic) NSTimer *keyboardTimer;
 
-- (void) scheduleTimer: (UITextField *) textField;
-- (void) textDidChanged: (id) sender;
 - (void) populateAverageSalary;
 - (void) populateNumberOfAttendees;
+- (void) dismissKeyboard:(id)sender;
 
 @end
 
@@ -28,9 +27,8 @@
 @synthesize salaryTextView;
 @synthesize salarySlider;
 @synthesize viewModel=_viewModel;
-@synthesize textViewAccessoryView;
-@synthesize keyboardTimer=_keyboardTimer;
 
+#pragma mark - lifecycle
 
 - (void)viewDidLoad
 {
@@ -44,17 +42,12 @@
     CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     self.attendeesSlider.transform = trans;
     self.salarySlider.transform = trans;
-
     
-    self.salarySlider.maximumValue = MEETING_MAX_AVG_SALARY;
+    self.salarySlider.maximumValue = MEETING_MAX_AVG_SALARY / MEETING_MAX_AVG_SALARY_STEP;
     self.attendeesSlider.maximumValue = MEETING_MAX_ATTENDEE;
     
     [self populateAverageSalary];
     [self populateNumberOfAttendees];
-    
-    self.attendeesTextView.inputAccessoryView = self.textViewAccessoryView;
-    self.salaryTextView.inputAccessoryView = self.textViewAccessoryView;
-    
 
 }
 
@@ -69,7 +62,6 @@
     
     [self setAttendeesTextView:nil];
     [self setSalaryTextView:nil];
-    [self setTextViewAccessoryView:nil];
     [super viewDidUnload];
     
     
@@ -87,15 +79,18 @@
     [attendeesSlider release];
     [attendeesTextView release];
     [salaryTextView release];
-    [textViewAccessoryView release];
+    [salaryTextView release];
+    [attendeesTextView release];
     [super dealloc];
 }
+
+#pragma mark - event handling 
 
 - (IBAction)averageSalaryChanged:(id)sender {
     if (sender == self.salaryTextView) {
         self.viewModel.averageSalary = [self.salaryTextView.text intValue];
     } else if (sender == self.salarySlider) {
-        self.viewModel.averageSalary = self.salarySlider.value;
+        self.viewModel.averageSalary = round(self.salarySlider.value) * MEETING_MAX_AVG_SALARY_STEP;
     }
     [self populateAverageSalary];
 }
@@ -104,10 +99,6 @@
     [self performSegueWithIdentifier: @"gotoMeetingSegue" sender: self];
 }
 
-- (IBAction)dismissKeyboard:(id)sender {
-    [self.attendeesTextView resignFirstResponder];
-    [self.salaryTextView resignFirstResponder];
-}
 
 - (IBAction)numberOfAttendeeChanged:(id)sender {
     if (sender == self.attendeesTextView) {
@@ -118,9 +109,51 @@
     [self populateNumberOfAttendees];
 }
 
+
+#pragma mark - UITextViewDelegate
+
+- (void) textViewDidChange:(UITextView *)textView {
+    if (textView == self.attendeesTextView) {
+        [self numberOfAttendeeChanged: textView];
+    } else if (textView == self.salaryTextView) {
+        [self averageSalaryChanged: textView];
+    }
+    self.keyboardTimer = nil;
+}
+
+- (BOOL) textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    NSCharacterSet *validCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".0123456789"];
+    NSCharacterSet *returnCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"\n"];
+
+    BOOL hasReturn = [text rangeOfCharacterFromSet:returnCharacterSet].location != NSNotFound;
+    if (hasReturn) {
+        [self dismissKeyboard:textView];
+        return NO;
+    }
+    
+    BOOL shouldChange =
+    [text length] == 0 || // deletion
+    [text rangeOfCharacterFromSet:validCharacterSet].location != NSNotFound;
+        
+    return shouldChange;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - private
+
+- (void)dismissKeyboard:(id)sender {
+    [self.attendeesTextView resignFirstResponder];
+    [self.salaryTextView resignFirstResponder];
+}
+
 - (void) populateAverageSalary {
     self.salaryTextView.text = [NSString stringWithFormat: @"%d", self.viewModel.averageSalary];
-    self.salarySlider.value = self.viewModel.averageSalary;
+    self.salarySlider.value = round(self.viewModel.averageSalary / MEETING_MAX_AVG_SALARY_STEP);
 }
 
 - (void) populateNumberOfAttendees {
@@ -129,37 +162,5 @@
 }
 
 
-- (void) scheduleTimer: (UITextView *) textField {
-    if (self.keyboardTimer != nil) {
-        [self.keyboardTimer invalidate];
-    }
-    self.keyboardTimer = [NSTimer scheduledTimerWithTimeInterval: .5f target: self selector: @selector(textDidChanged:) userInfo:textField repeats:NO];
-}
-
-- (void) textDidChanged: (id) sender {
-    UITextField *textField = ((NSTimer *)sender).userInfo;
-    if (textField == self.attendeesTextView) {
-        [self numberOfAttendeeChanged: textField];
-    } else if (textField == self.salaryTextView) {
-        [self averageSalaryChanged: textField];
-    }
-    self.keyboardTimer = nil;
-}
-
-- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    [self scheduleTimer: textField];
-    NSCharacterSet *validCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@".0123456789"];
-    
-    BOOL shouldChange =
-    [string length] == 0 || // deletion
-    [string rangeOfCharacterFromSet:validCharacterSet].location != NSNotFound;
-
-    return shouldChange;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    [theTextField resignFirstResponder];
-    return YES;
-}
 
 @end
