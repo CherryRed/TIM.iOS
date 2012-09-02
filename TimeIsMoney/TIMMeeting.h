@@ -10,6 +10,7 @@
 
 #define MEETING_MAX_ATTENDEE        25
 #define MEETING_MAX_AVG_SALARY      3000
+#define MEETING_MAX_AVG_SALARY_STEP 100
 
 
 @interface TIMMeeting : NSObject {

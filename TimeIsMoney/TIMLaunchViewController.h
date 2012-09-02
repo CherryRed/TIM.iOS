@@ -11,19 +11,17 @@
 
 @class TIMLaunchViewModel;
 
-@interface TIMLaunchViewController : TIMViewController<UITextFieldDelegate> {
+@interface TIMLaunchViewController : TIMViewController<UITextViewDelegate> {
     TIMLaunchViewModel *_viewModel;
     NSTimer *_keyboardTimer;
 }
 
 @property (retain, nonatomic) TIMLaunchViewModel *viewModel;
-@property (retain, nonatomic) IBOutlet UIToolbar *textViewAccessoryView;
 @property (retain, nonatomic) IBOutlet UISlider *attendeesSlider;
-@property (retain, nonatomic) IBOutlet UITextField *attendeesTextView;
-@property (retain, nonatomic) IBOutlet UITextField *salaryTextView;
+@property (retain, nonatomic) IBOutlet UITextView *attendeesTextView;
+@property (retain, nonatomic) IBOutlet UITextView *salaryTextView;
 @property (retain, nonatomic) IBOutlet UISlider *salarySlider;
 
-- (IBAction) dismissKeyboard:(id)sender;
 - (IBAction) numberOfAttendeeChanged:(id)sender;
 - (IBAction) averageSalaryChanged:(id)sender;
 
