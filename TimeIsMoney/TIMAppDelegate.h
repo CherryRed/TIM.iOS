@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TIMLaunchViewController.h"
 
-@interface TIMAppDelegate : UIResponder <UIApplicationDelegate>
+@interface TIMAppDelegate : UIResponder <UIApplicationDelegate> {
+    TIMLaunchViewController *_launchViewController;
+}
 
-@property (strong, nonatomic) UIWindow *window;
+@property (retain, nonatomic) UIWindow *window;
+@property (retain, nonatomic) TIMLaunchViewController *launchViewController;
 
 @end

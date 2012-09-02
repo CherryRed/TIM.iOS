@@ -9,9 +9,11 @@
 #import "TIMAppDelegate.h"
 
 @implementation TIMAppDelegate
+@synthesize launchViewController=_launchViewController;
 
 - (void)dealloc
 {
+    [_launchViewController release];
     [_window release];
     [super dealloc];
 }
@@ -19,7 +21,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
     // Override point for customization after application launch.
+    TIMLaunchViewController *aLaunchViewController = [[TIMLaunchViewController alloc] init];
+    self.launchViewController = aLaunchViewController;
+    [aLaunchViewController release];
+    
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController: self.launchViewController];
+    [nc setNavigationBarHidden: YES];
+    self.window.rootViewController = nc;
+    [nc release];
+
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
