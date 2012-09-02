@@ -14,9 +14,8 @@
 
 @implementation TIMResultsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder: aDecoder];
     if (self) {
         // Custom initialization
     }
@@ -39,6 +38,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)backToInitial:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated: YES];
 }
 
 @end

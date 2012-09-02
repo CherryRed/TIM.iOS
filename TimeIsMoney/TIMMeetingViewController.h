@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "TIMViewController.h"
+#import "TIMMeetingViewModelDelegate.h"
+
 
 @class TIMMeetingViewModel;
 
-@interface TIMMeetingViewController : TIMViewController {
+@interface TIMMeetingViewController : TIMViewController<TIMMeetingViewModelDelegate> {
     TIMMeetingViewModel *_viewModel;
 }
 

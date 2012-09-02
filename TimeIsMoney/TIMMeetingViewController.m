@@ -10,39 +10,40 @@
 #import "TIMMeetingViewModel.h"
 #import "TIMMeeting.h"
 
-
 @interface TIMMeetingViewController ()
 
 @end
 
 @implementation TIMMeetingViewController
-@synthesize viewModel=_viewModel;
-@synthesize salary = _salary;
-@synthesize attendee = _attendee;
-@synthesize time = _time;
-@synthesize cost = _cost;
+@synthesize viewModel = _viewModel;
+@synthesize salary;
+@synthesize attendee;
+@synthesize time;
+@synthesize cost;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder: aDecoder];
     if (self) {
         TIMMeetingViewModel *viewModel = [[TIMMeetingViewModel alloc] init];
+        viewModel.delegate = self;
         self.viewModel = viewModel;
         [viewModel release];
     }
     return self;
 }
 
+# pragma mark - Life cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    TIMMeeting *meeting = [TIMMeeting instance];
-    self.salary.text = [NSString stringWithFormat: @"%d", meeting.averageSalary];
-    self.attendee.text = [NSString stringWithFormat: @"%d", meeting.attendees];
-    self.cost.text = [NSString stringWithFormat: @"%d", meeting.cost];
-    self.time.text = @"00:00";
+    self.salary.text = [NSString stringWithFormat: @"%d", self.viewModel.salary];
+    self.attendee.text = [NSString stringWithFormat: @"%d", self.viewModel.attendees];
+    self.cost.text = [NSString stringWithFormat: @"$ %d", self.viewModel.cost];
+    self.time.text = @"00:00:00";
     
+    [self.viewModel start];
 }
 
 - (void)viewDidUnload
@@ -53,22 +54,32 @@
     [self setTime:nil];
     [self setCost:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)dealloc
 {
     [_viewModel release];
-    [_salary release];
-    [_attendee release];
-    [_time release];
-    [_cost release];
+    [self.salary release];
+    [self.attendee release];
+    [self.time release];
+    [self.cost release];
     [super dealloc];
 }
 
+# pragma mark - Events
+
 - (IBAction)finishTapped:(id)sender {
+    [self.viewModel finish];
     [self performSegueWithIdentifier: @"gotoResultsSegue" sender: self];
+}
+
+# pragma mark - View Model delegate
+
+- (void) meetingViewModelCostDidChanged:(id<TIMMeetingViewModelDelegate>)viewModel {
+    self.cost.text = [NSString stringWithFormat: @"$ %d", [self.viewModel cost]];
+    
+    NSDateComponents *comps = [self.viewModel duration];
+    self.time.text = [NSString stringWithFormat: @"%d:%d:%d", [comps hour], [comps minute], [comps second]];
 }
 
 @end

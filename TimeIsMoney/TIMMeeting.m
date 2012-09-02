@@ -15,14 +15,20 @@ static TIMMeeting *instance = nil;
 @property (assign, nonatomic) NSUInteger attendees;
 @property (assign, nonatomic) NSUInteger averageSalary;
 @property (assign, nonatomic) NSUInteger cost;
+@property (retain, nonatomic) NSDate *start;
+@property (retain, nonatomic) NSDate *end;
+@property (retain, nonatomic) NSDateComponents *duration;
 
 @end
 
 @implementation TIMMeeting
+
 @synthesize attendees=_attendees;
 @synthesize averageSalary=_averageSalary;
 @synthesize cost=_cost;
-
+@synthesize start=_start;
+@synthesize end=_end;
+@synthesize duration=_duration;
 
 #pragma mark - Singleton
 
@@ -32,7 +38,6 @@ static TIMMeeting *instance = nil;
             [[self alloc] init];
         }
     }
-    
     return instance;
 }
 
@@ -40,6 +45,9 @@ static TIMMeeting *instance = nil;
     instance.averageSalary = 3000;
     instance.attendees = 5;
     instance.cost = 0;
+    instance.start = [NSDate date];
+    instance.end = [NSDate date];
+    instance.duration = nil;
 }
 
 - (id)init {
@@ -83,23 +91,24 @@ static TIMMeeting *instance = nil;
 #pragma mark - Operations
 
 - (void) startMeetingWithAttendees: (NSUInteger) attendees andAnAverageSalary: (NSUInteger) averageSalary {
-    
     self.attendees = attendees;
     self.averageSalary = averageSalary;
+    self.start = [NSDate date];
+    self.end = nil;
     self.cost = 0;
-    
+    self.duration = nil;
 }
 
-- (void) pause  {
-    
+- (NSUInteger) currentCost {
+    self.duration = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate: self.start toDate: [NSDate date] options: 0];
+
+    self.cost = ([self.duration second] * self.attendees * self.averageSalary)/(160*8);
+    return self.cost;
 }
 
-- (void) resume {
-    
-}
-
-- (void) finish {
-    
+- (void) finishMeeting {
+    self.end = [NSDate date];
+    [self currentCost];
 }
 
 @end
