@@ -79,7 +79,7 @@
     self.cost.text = [NSString stringWithFormat: @"$ %d", [self.viewModel cost]];
     
     NSDateComponents *comps = [self.viewModel duration];
-    self.time.text = [NSString stringWithFormat: @"%d:%d:%d", [comps hour], [comps minute], [comps second]];
+    self.time.text = [NSString stringWithFormat: @"%@%d:%@%d:%@%d", [comps hour] < 10 ? @"0" : @"", [comps hour], [comps minute] < 10 ? @"0" : @"", [comps minute], [comps second] < 10 ? @"0" : @"", [comps second]];
 }
 
 @end
