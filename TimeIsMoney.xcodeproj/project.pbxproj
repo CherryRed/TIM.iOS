@@ -28,6 +28,7 @@
 		E46F41E415F2D98B0098F6FD /* TIMMeeting.m in Sources */ = {isa = PBXBuildFile; fileRef = E46F41E315F2D98B0098F6FD /* TIMMeeting.m */; };
 		E46F41E915F2EFE20098F6FD /* TIMResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46F41E715F2EFE20098F6FD /* TIMResultsViewController.m */; };
 		E46F41EA15F2EFE20098F6FD /* TIMResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46F41E815F2EFE20098F6FD /* TIMResultsViewController.xib */; };
+		E46F41F515F3BF2B0098F6FD /* iPad-Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46F41F415F3BF2B0098F6FD /* iPad-Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		E46F41E615F2EFE20098F6FD /* TIMResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIMResultsViewController.h; sourceTree = "<group>"; };
 		E46F41E715F2EFE20098F6FD /* TIMResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIMResultsViewController.m; sourceTree = "<group>"; };
 		E46F41E815F2EFE20098F6FD /* TIMResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TIMResultsViewController.xib; sourceTree = "<group>"; };
+		E46F41F415F3BF2B0098F6FD /* iPad-Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "iPad-Storyboard.storyboard"; path = "../iPad-Storyboard.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 		E46F41C115F2928E0098F6FD /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
+				E46F41F415F3BF2B0098F6FD /* iPad-Storyboard.storyboard */,
 				E46F41E515F2EFBA0098F6FD /* Results */,
 				E46F41D915F2D5A90098F6FD /* Meeting */,
 				E46F41D515F2A5390098F6FD /* Launch */,
@@ -311,6 +314,7 @@
 				E46F41CA15F294970098F6FD /* TIMLaunchViewController.xib in Resources */,
 				E46F41DE15F2D6780098F6FD /* TIMMeetingViewController.xib in Resources */,
 				E46F41EA15F2EFE20098F6FD /* TIMResultsViewController.xib in Resources */,
+				E46F41F515F3BF2B0098F6FD /* iPad-Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +455,7 @@
 				GCC_PREFIX_HEADER = "TimeIsMoney/TimeIsMoney-Prefix.pch";
 				INFOPLIST_FILE = "TimeIsMoney/TimeIsMoney-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -462,6 +467,7 @@
 				GCC_PREFIX_HEADER = "TimeIsMoney/TimeIsMoney-Prefix.pch";
 				INFOPLIST_FILE = "TimeIsMoney/TimeIsMoney-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

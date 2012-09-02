@@ -107,12 +107,7 @@
 }
 
 - (IBAction)goTapped:(id)sender {
-    
-    [self.viewModel startMeeting];
-        
-    TIMMeetingViewController *meetingVC = [[TIMMeetingViewController alloc] init];
-    [self.navigationController pushViewController: meetingVC animated: YES];
-    [meetingVC release];
+    [self performSegueWithIdentifier: @"gotoMeetingSegue" sender: self];
 }
 
 - (IBAction)dismissKeyboard:(id)sender {

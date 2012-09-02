@@ -27,6 +27,6 @@
 - (IBAction) numberOfAttendeeChanged:(id)sender;
 - (IBAction) averageSalaryChanged:(id)sender;
 
-- (IBAction)goTapped:(id)sender;
+- (IBAction) goTapped:(id)sender;
 
 @end

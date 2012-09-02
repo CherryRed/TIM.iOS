@@ -67,4 +67,8 @@
     [super dealloc];
 }
 
+- (IBAction)finishTapped:(id)sender {
+    [self performSegueWithIdentifier: @"gotoResultsSegue" sender: self];
+}
+
 @end

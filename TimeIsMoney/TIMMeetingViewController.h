@@ -21,4 +21,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *time;
 @property (retain, nonatomic) IBOutlet UILabel *cost;
 
+- (IBAction)finishTapped:(id)sender;
+
 @end
