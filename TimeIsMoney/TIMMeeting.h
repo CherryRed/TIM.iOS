@@ -16,7 +16,7 @@
 @interface TIMMeeting : NSObject {
     NSUInteger _attendees;
     NSUInteger _averageSalary;
-    NSUInteger _cost;
+    float _cost;
     NSDate *_start;
     NSDate *_end;
     NSDateComponents *_duration;
@@ -29,11 +29,11 @@
 
 - (NSUInteger) attendees;
 - (NSUInteger) averageSalary;
-- (NSUInteger) cost;
+- (float) cost;
 - (NSDate*) start;
 - (NSDate*) end;
 - (NSDateComponents*) duration;
 
-- (NSUInteger) currentCost;
+- (float) currentCost;
 
 @end
