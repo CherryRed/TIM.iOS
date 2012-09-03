@@ -14,7 +14,7 @@ static TIMMeeting *instance = nil;
 
 @property (assign, nonatomic) NSUInteger attendees;
 @property (assign, nonatomic) NSUInteger averageSalary;
-@property (assign, nonatomic) NSUInteger cost;
+@property (assign, nonatomic) float cost;
 @property (retain, nonatomic) NSDate *start;
 @property (retain, nonatomic) NSDate *end;
 @property (retain, nonatomic) NSDateComponents *duration;
@@ -99,10 +99,12 @@ static TIMMeeting *instance = nil;
     self.duration = nil;
 }
 
-- (NSUInteger) currentCost {
+- (float) currentCost {
     self.duration = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate: self.start toDate: [NSDate date] options: 0];
 
-    self.cost = ([self.duration second] * self.attendees * self.averageSalary)/(160*8);
+    NSUInteger seconds = [self.duration second] + 60*[self.duration minute] + 3600*[self.duration hour];
+    
+    self.cost = (seconds * self.attendees * self.averageSalary)/(160*3600.0);
     return self.cost;
 }
 
