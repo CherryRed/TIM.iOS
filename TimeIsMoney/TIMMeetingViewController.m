@@ -40,7 +40,7 @@
     
     self.salary.text = [NSString stringWithFormat: @"%d", self.viewModel.salary];
     self.attendee.text = [NSString stringWithFormat: @"%d", self.viewModel.attendees];
-    self.cost.text = [NSString stringWithFormat: @"$ %d", self.viewModel.cost];
+    self.cost.text = [NSString stringWithFormat: @"$ %.02f", self.viewModel.cost];
     self.time.text = @"00:00:00";
     
     [self.viewModel start];
@@ -76,7 +76,7 @@
 # pragma mark - View Model delegate
 
 - (void) meetingViewModelCostDidChanged:(id<TIMMeetingViewModelDelegate>)viewModel {
-    self.cost.text = [NSString stringWithFormat: @"$ %d", [self.viewModel cost]];
+    self.cost.text = [NSString stringWithFormat: @"$ %.02f", [self.viewModel cost]];
     
     NSDateComponents *comps = [self.viewModel duration];
     self.time.text = [NSString stringWithFormat: @"%@%d:%@%d:%@%d", [comps hour] < 10 ? @"0" : @"", [comps hour], [comps minute] < 10 ? @"0" : @"", [comps minute], [comps second] < 10 ? @"0" : @"", [comps second]];

@@ -15,10 +15,10 @@
 @property (assign, nonatomic) id<TIMMeetingViewModelDelegate> delegate;
 @property (assign, nonatomic) NSUInteger attendees;
 @property (assign, nonatomic) NSUInteger salary;
-@property (assign, nonatomic) NSUInteger cost;
+@property (assign, nonatomic) float cost;
 @property (retain, nonatomic) NSDateComponents *duration;
 
-- (NSUInteger) cost;
+- (float) cost;
 - (NSDateComponents*) duration;
 
 - (void)start;
